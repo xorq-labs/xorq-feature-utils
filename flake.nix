@@ -58,7 +58,6 @@
         });
 
       pyprojectOverrides = final: prev: {
-        hash-cache = prev.hash-cache.overrideAttrs (addResolved final [ "hatchling" ]);
       };
 
       pkgs = import nixpkgs {

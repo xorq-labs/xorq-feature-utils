@@ -5,9 +5,13 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "attrs>=25.3.0",
+    "pandas>=2.3.0",
+    "pyarrow>=20.0.0",
     "requests>=2.32.3",
     "toolz>=1.0.0",
     "urllib3>=2.2.3",
+    "xorq>=0.2.2",
 ]
 
 [build-system]
