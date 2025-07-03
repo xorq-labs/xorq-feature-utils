@@ -76,8 +76,8 @@
               (uv2nix_hammer_overrides.overrides pkgs)
             ]
           );
-      virtualenv-all = pythonSet.mkVirtualEnv "feature-utils-env" workspace.deps.all;
-      virtualenv-default = pythonSet.mkVirtualEnv "feature-utils-env" workspace.deps.all;
+      virtualenv-all = pythonSet.mkVirtualEnv "xorq-feature-utils-env" workspace.deps.all;
+      virtualenv-default = pythonSet.mkVirtualEnv "xorq-feature-utils-env" workspace.deps.all;
       impureShell = pkgs.mkShell {
         packages = [
           python
@@ -109,7 +109,7 @@
             lib.composeManyExtensions [
               editableOverlay
               (final: prev: {
-                feature-utils = prev.feature-utils.overrideAttrs (old: {
+                xorq-feature-utils = prev.xorq-feature-utils.overrideAttrs (old: {
                   # It's a good idea to filter the sources going into an editable build
                   # so the editable package doesn't have to be rebuilt on every change.
                   src = lib.fileset.toSource {
@@ -117,7 +117,7 @@
                     fileset = lib.fileset.unions [
                       (old.src + "/pyproject.toml")
                       (old.src + "/README.md")
-                      (old.src + "/src/feature_utils/__init__.py")
+                      (old.src + "/src/xorq_feature_utils/__init__.py")
                     ];
                   };
                   nativeBuildInputs =
@@ -130,7 +130,7 @@
               })
             ]
           );
-          virtualenv = editablePythonSet.mkVirtualEnv "feature-utils-dev-env" workspace.deps.all;
+          virtualenv = editablePythonSet.mkVirtualEnv "xorq-feature-utils-dev-env" workspace.deps.all;
         in
         pkgs.mkShell {
           packages = [
